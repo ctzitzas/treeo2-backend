@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :store do
-    name { "MyString" }
-    address { "MyString" }
-    suburb { "MyString" }
-    state { "MyString" }
-    postcode { "MyString" }
+    name { "Corner Store Network" }
+    address { "42 Regent Street" }
+    suburb { "Oakleigh" }
+    state { "Victoria" }
+    postcode { "Australia" }
   end
 end

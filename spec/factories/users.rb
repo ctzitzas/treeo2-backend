@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :user do
-    name { "MyString" }
-    email { "MyString" }
-    password_digest { "MyString" }
-    key { "MyString" }
+    name { "Chris" }
+    email { "ctzitzas@me.com" }
+    password_digest { "password" }
+    key { "AAA001" }
     user_type { 1 }
-    store { nil }
+    store { association :store }
   end
 end
