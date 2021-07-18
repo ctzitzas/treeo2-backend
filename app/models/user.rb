@@ -7,8 +7,9 @@ class User < ApplicationRecord
   (?=.*[A-Z])        # Must contain an upper case character
 /x
   
+  has_secure_password
   belongs_to :store
-  validates :name, :email, :password_digest, :key, :user_type, presence: true
+  validates :name, :email, :password_digest, :key, :user_type, :store_id, presence: true
   validates :email, :key, uniqueness: true
   validates_format_of :password_digest, with: password_format
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
