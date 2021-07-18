@@ -47,6 +47,21 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
 
+    it 'is invalid when password has no numbers' do
+      user = build(:user, password_digest: "Gameofthrones")
+      expect(user).to_not be_valid
+    end
+
+    it 'is invalid when password has no capitals' do
+      user = build(:user, password_digest: "gameofthrones13")
+      expect(user).to_not be_valid
+    end
+
+    it 'is valid when valid password is entered' do
+      user = build(:user, password_digest: "BreakingBad42")
+      expect(user).to be_valid
+    end
+
   end
 
 end
