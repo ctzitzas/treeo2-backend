@@ -20,7 +20,7 @@ puts "creating admin account"
 admin = User.create(
   name: "Admin",
   email: "admin@gmail.com",
-  password_digest: "password",
+  password_digest: "Password123",
   key: Faker::Alphanumeric.alphanumeric(number: 10),
   user_type: 2,
   store: store
