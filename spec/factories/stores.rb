@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :store do
-    name { "Corner Store Network" }
-    address { "42 Regent Street" }
-    suburb { "Oakleigh" }
-    state { "Victoria" }
+    name { Faker::Restaurant.name   }
+    address { Faker::Address.street_address }
+    suburb { Faker::Address.city }
+    state { Faker::Address.state }
     postcode { "Australia" }
   end
 end
