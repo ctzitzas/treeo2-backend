@@ -33,7 +33,7 @@ RSpec.describe Store, type: :model do
     end
 
     it "is invalid with only 2 letters" do
-      store = build(:store, state: 'vi')
+      store = build(:store, state: 'v')
       expect(store).to_not be_valid
     end
 
