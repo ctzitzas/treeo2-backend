@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def sign_up
     @user = User.create(user_params)
     if @user.valid?
-      render json: {name: @user.name, email: @user.email, key: @user.key, store: @user.store_id, token: encode({user_id: @user.id})}, status: :created
+      render json: {name: @user.name, email: @user.email, token: encode({user_id: @user.id})}, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
