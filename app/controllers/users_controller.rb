@@ -46,7 +46,14 @@ class UsersController < ApplicationController
       email: @user.email,
       key: @user.key,
       token: encode({user_id: @user.id}),
-      store: @store
+      store: {
+        name: @store.name,
+        address: @store.address,
+        suburb: @store.suburb,
+        state: @store.state,
+        postcode: @store.postcode,
+        key: @store.key
+      }
       }
   end
 
