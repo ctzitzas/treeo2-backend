@@ -22,7 +22,7 @@ admin = User.create(
   name: "Admin",
   email: "admin@gmail.com",
   password_digest: BCrypt::Password.create("Password"),
-  key: Faker::Alphanumeric.alphanumeric(number: 10),
+  key: Faker::Alphanumeric.alphanumeric(number: 12),
   user_type: 2,
   store: store
 )

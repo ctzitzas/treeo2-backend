@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   def randomise_key
     begin
-      self.key = SecureRandom.alphanumeric(10)
+      self.key = SecureRandom.alphanumeric(12)
     end while self.class.where(key: self.key).exists?
   end
 end
