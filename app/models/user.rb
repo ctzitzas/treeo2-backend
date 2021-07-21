@@ -17,6 +17,5 @@ class User < ApplicationRecord
       self.key = SecureRandom.alphanumeric(10)
     end while self.class.where(key: self.key).exists?
   end
-
 end
 
