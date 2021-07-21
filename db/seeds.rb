@@ -7,33 +7,41 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-puts "Creating store"
+puts "creating store"
 store = Store.create(
   name: "Corner Store Network",
   address: "42 Regent Street",
   suburb: "Oakleigh",
   state: "Victoria",
-  postcode: "3250"
+  postcode: "3250",
+  key: "85e3b8c69cf6"
 )
 
 puts "creating admin account"
 admin = User.create(
   name: "Admin",
   email: "admin@gmail.com",
-  password_digest: "Password123",
+  password_digest: BCrypt::Password.create("Password"),
   key: Faker::Alphanumeric.alphanumeric(number: 10),
   user_type: 2,
   store: store
 )
 
-5.times do |i|
-  puts "creating user #{i}"
-  user = User.create(
-    name: Faker::Name.unique.name,
-    email: Faker::Internet.free_email,
-    password_digest: Faker::Internet.password(min_length: 8),
-    key: Faker::Alphanumeric.alphanumeric(number: 10),
-    user_type: 1,
-    store: store
-  )
-end
+puts 'creating existing user'
+user = User.create(
+  name: "Andrew Mahar",
+  email: "andrew@test.com.au",
+  password_digest: BCrypt::Password.create("Password"),
+  key: "Andrew Mahar",
+  user_type: 1,
+  store: store
+)
+
+puts 'creating test user'
+user = User.create(
+  name: "Test user",
+  email: "user@test.com",
+  password_digest: BCrypt::Password.create("Password"),
+  user_type: 1,
+  store: store
+)
