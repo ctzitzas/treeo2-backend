@@ -29,10 +29,10 @@ admin = User.create(
 
 puts 'creating existing user'
 user = User.create(
-  name: "Andrew Mahar",
-  email: "andrew@test.com",
+  name: "Alice Mahar",
+  email: "alice@test.com",
   password_digest: BCrypt::Password.create("Password"),
-  key: "Andrew Mahar",
+  key: "alice mahar",
   user_type: 1,
   store: store
 )
