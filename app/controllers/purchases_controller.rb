@@ -1,8 +1,10 @@
 class PurchasesController < ApplicationController
 
+  before_action :payment_params
+
   def create
 
-    url = 'http://localhost:3001/'
+    url = 'http://localhost:3001'
 
       session = Stripe::Checkout::Session.create({
         payment_method_types: ['card'],
@@ -14,12 +16,16 @@ class PurchasesController < ApplicationController
             },
             unit_amount: 100,
           },
-          quantity: 1,
+          quantity: params[:quantity]
         }],
         mode: 'payment',
-        success_url: url + 'MyTrees',
-        cancel_url: url + 'MyTrees'
+        success_url: url + '/AdoptedTree',
+        cancel_url: url + '/Adopt'
       })
       redirect_to session.url, status: 303
+  end
+
+  def payment_params
+    params.permit(:quantity)
   end
 end
