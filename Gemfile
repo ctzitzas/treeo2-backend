@@ -51,3 +51,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "database_cleaner", "~> 2.0"
 
 gem "jwt", "~> 2.2"
+
+gem "stripe", "~> 5.37"
