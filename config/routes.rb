@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   post "/sign_up", to: "users#sign_up"
   post "/login", to: "users#login"
+
+  post "/purchase", to: "purchases#create"
 end
