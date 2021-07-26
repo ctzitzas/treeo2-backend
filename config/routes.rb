@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
 
   post "/purchase", to: "purchases#create"
+  post "/webhook", to: "purchases#webhook"
 end
