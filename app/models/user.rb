@@ -3,6 +3,7 @@ class User < ApplicationRecord
   before_create :randomise_key
   
   has_secure_password
+  has_many :purchases
   belongs_to :store
   validates :name, :email, :password_digest, :user_type, :store_id, presence: true
   validates :email, :key, uniqueness: true
