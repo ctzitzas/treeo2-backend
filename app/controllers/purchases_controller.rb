@@ -27,7 +27,7 @@ class PurchasesController < ApplicationController
     begin
       sig_header = request.env['HTTP_STRIPE_SIGNATURE']
       payload = request.body.read
-      endpoint_secret = 'whsec_ODKTSUVbiSMMMPpq3VvNfiBjwUvIII50'
+      endpoint_secret = Rails.application.credentials.stripe[:endpoint_secret]
       event = Stripe::Webhook.construct_event(payload, sig_header, endpoint_secret)
     rescue JSON::ParserError => e
       return head :bad_request
