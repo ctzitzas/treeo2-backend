@@ -57,3 +57,5 @@ gem "stripe", "~> 5.37"
 gem "sinatra", "~> 2.1"
 
  gem "faker"
+
+gem "figaro", "~> 1.2"

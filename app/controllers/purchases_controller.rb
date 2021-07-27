@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
 
-  before_action :authenticated, only: [:create, :webhook]
+  # before_action :authenticated, only: [:create, :webhook]
   before_action :payment_params, only: [:create]
 
   def create
@@ -17,8 +17,8 @@ class PurchasesController < ApplicationController
           quantity: params[:quantity]
         }],
         mode: 'payment',
-        success_url: "http://localhost:3001/Success?trees=#{params[:quantity]}",
-        cancel_url: 'http://localhost:3001/Adopt',
+        success_url: "#{ENV['FRONTEND_URL']}/Success?trees=#{params[:quantity]}",
+        cancel_url: "#{ENV['FRONTEND_URL']}/Adopt",
         metadata: {
           'name': params[:name],
           'email': params[:email],
