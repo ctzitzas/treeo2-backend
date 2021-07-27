@@ -35,7 +35,7 @@ group :development, :test do
 
   gem "rails-controller-testing", "~> 1.0"
 
-  gem "faker"
+ 
   
 end
 
@@ -55,3 +55,5 @@ gem "jwt", "~> 2.2"
 gem "stripe", "~> 5.37"
 
 gem "sinatra", "~> 2.1"
+
+ gem "faker"
