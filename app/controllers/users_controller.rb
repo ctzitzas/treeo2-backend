@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :login]
-  before_action :authenticated, only: [:show]
+  before_action :set_user, only: [:login]
+  before_action :authenticated, only: [:index]
 
-  def show
-    render json: @user
+  def index
   end
 
   def sign_up

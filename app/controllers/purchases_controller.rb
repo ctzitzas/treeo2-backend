@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
 
+  before_action :authenticated, only: [:create, :webhook]
   before_action :payment_params, only: [:create]
 
   def create
@@ -27,10 +28,6 @@ class PurchasesController < ApplicationController
         },
       })
       redirect_to session.url, status: 303
-  end
-
-  def success
-
   end
 
   def webhook
