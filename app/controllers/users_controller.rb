@@ -1,15 +1,36 @@
 class UsersController < ApplicationController
 
+  before_action :authenticated, only: [:index, :update, :destroy]
   before_action :set_user, only: [:login]
-  before_action :authenticated, only: [:index]
+  before_action :set_login, only: [:login]
+  
 
   def index
+    render json: {index: 'Success'}, status: :ok
+  end
+
+  def update
+    begin
+      @user.update(name: params[:name], email: params[:email])
+      render json: {name: @user.name, email: @user.email, token:encode({user_id: @user.id})}, status: :ok
+    rescue
+      render json: {update: "Unable to update"}, status: 404
+    end
+  end
+
+  def destroy
+    begin
+      @user.destroy
+      render json: {destroy: 'Success'}, status: :ok
+    rescue
+      render json: {destroy: "Unable to delete"}, status: 404
+    end
   end
 
   def sign_up
     @user = User.create(user_params)
     if @user.valid?
-      render json: { login: 'success' }, status: :created
+      render json: { login: 'Success' }, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -25,12 +46,15 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user 
+  def set_user
     begin
       @user = User.find_by(email: params[:email])
     rescue
-      render json: {error: "Page not found"}, status: 404
+      render json: {error: "User not found"}, status: 404
     end
+  end
+
+  def set_login 
     begin
       @store = Store.find_by(id: @user.store_id)
       @login_response = {

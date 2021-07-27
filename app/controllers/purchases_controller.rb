@@ -1,6 +1,5 @@
 class PurchasesController < ApplicationController
 
-  # before_action :authenticated, only: [:create, :webhook]
   before_action :payment_params, only: [:create]
 
   def create
